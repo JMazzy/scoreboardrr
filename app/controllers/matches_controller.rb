@@ -35,8 +35,8 @@ class MatchesController < ApplicationController
 
   def destroy
     @match = Match.find(params[:id])
-    if (@match.destroy(params[:id]))
-      redirect_to :index
+    if (@match.destroy)
+      redirect_to :matches
     else
       render "show"
     end

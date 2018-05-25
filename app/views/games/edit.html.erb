@@ -1,0 +1,10 @@
+<h2>Edit a Game</h2>
+
+<%= form_for @game, url: {action: "update"}, html: {class: "ui form"} do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit "Submit", class: "ui green button" %>
+<% end %>

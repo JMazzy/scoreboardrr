@@ -1,0 +1,4 @@
+<h2><%= @game.name %></h2>
+<div class="ui divider"></div>
+<%= link_to "Edit", { action: "edit", id: @game.id }, method: :get, class: "ui blue button" %>
+<%= link_to "Delete", { action: "destroy", id: @game.id }, method: :delete, class: "ui red button" %>

@@ -1,0 +1,12 @@
+<h2>Games</h2>
+
+<% @games.each do |t| %>
+<div class="">
+  <%= link_to t.name, game_path(t) %>
+</div>
+<% end %>
+<div class="ui divider"></div>
+
+<div>
+  <%= link_to "New Game", { action: "new" }, method: :get, class: "ui green button" %>
+</div>

@@ -35,8 +35,8 @@ class TeamsController < ApplicationController
 
   def destroy
     @team = Team.find(params[:id])
-    if (@team.destroy(params[:id]))
-      redirect_to :index
+    if (@team.destroy)
+      redirect_to :teams
     else
       render "show"
     end

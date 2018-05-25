@@ -1,0 +1,7 @@
+<h2>Teams</h2>
+
+<% @teams.each do |t| %>
+  <%= link_to t.name, team_path(t) %>
+<% end %>
+
+<%= button_to "New Team", { action: "new" }, method: :get, class: "ui button" %>

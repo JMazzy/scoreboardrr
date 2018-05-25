@@ -1,0 +1,3 @@
+<h2><%= @team.name %></h2>
+<%= button_to "Edit", { action: "edit", id: @team.id }, method: :get, class: "ui button" %>
+<%= button_to "Delete", { action: "destroy", id: @team.id }, method: :delete, class: "ui button" %>

@@ -1,0 +1,16 @@
+<h2>Edit a Match</h2>
+
+<%= form_for @match, html: {class: "ui form"} do |f| %>
+  <div class="field">
+    <%= f.label :team %>
+    <%= f.collection_select :team_ids, Team.all, :id, :name%>
+
+    <%= f.label :team %>
+    <%= f.collection_select :team_ids, Team.all, :id, :name%>
+
+    <%= f.label :game %>
+    <%= f.collection_select :game_id, Game.all, :id, :name %>
+  </div>
+
+  <%= f.submit "Submit", class: "ui green button" %>
+<% end %>

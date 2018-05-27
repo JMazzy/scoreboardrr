@@ -1,7 +1,21 @@
-<h2>Teams</h2>
+<h2 class="ui header">Teams</h2>
 
-<% @teams.each do |t| %>
-  <%= link_to t.name, team_path(t) %>
-<% end %>
+<div class="ui vertically divided grid">
+  <%= render partial: "shared/empty_row", locals: { collection: @teams, item_title: "teams"} %>
 
-<%= button_to "New Team", { action: "new" }, method: :get, class: "ui button" %>
+  <% @teams.each do |t| %>
+    <div class="two column row">
+      <div class="column">
+        <h3><%= t.name %></h3>
+      </div>
+      <div class="right aligned column">
+        <%= link_to "Edit", { action: "edit", id: t.id }, method: :get, class: "ui blue button" %>
+        <%= link_to "Delete", { action: "destroy", id: t.id }, method: :delete, class: "ui red button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <%= button_to "New Team", { action: "new" }, method: :get, class: "ui green button" %>
+</div>

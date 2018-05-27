@@ -1,0 +1,27 @@
+<h2 class="ui header">Matches</h2>
+
+<div class="ui vertically divided grid">
+  <%= render partial: "shared/empty_row", locals: { collection: @matches, item_title: "matches" } %>
+
+  <% @matches.each do |m| %>
+    <div class="four column row">
+      <div class="column">
+        <h3><%= m.teams.map { |t| t.name }.join(' vs. ') %></h3>
+      </div>
+      <div class="column">
+        <h3><%= m.game.name %></h3>
+      </div>
+      <div class="column">
+        <h3><%= m.score || "Not Played" %></h3>
+      </div>
+      <div class="right aligned column">
+        <%= link_to "Edit", {action: "edit", id: m.id}, method: :get, class: "ui blue button" %>
+        <%= link_to "Delete", {action: "destroy", id: m.id}, method: :delete, class: "ui red button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "New Match", { action: "new" }, method: :get, class: "ui green button" %>
+</div>

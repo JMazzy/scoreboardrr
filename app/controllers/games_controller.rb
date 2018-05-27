@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if (@game.save)
-      redirect_to @game
+      redirect_to :games
     else
       render "new"
     end
@@ -27,7 +27,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     if (@game.update(game_params))
-      redirect_to @game
+      redirect_to :games
     else
       render "edit"
     end

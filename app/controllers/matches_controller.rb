@@ -14,7 +14,8 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     if (@match.save)
-      redirect_to @match
+      @match.teams << Team.where(match_params[:team_ids])
+      redirect_to :matches
     else
       render "new"
     end
@@ -27,7 +28,7 @@ class MatchesController < ApplicationController
   def update
     @match = Match.find(params[:id])
     if (@match.update(match_params))
-      redirect_to @match
+      redirect_to :matches
     else
       render "edit"
     end
@@ -38,13 +39,12 @@ class MatchesController < ApplicationController
     if (@match.destroy)
       redirect_to :matches
     else
-      render "show"
+      render "index"
     end
   end
 
   private
   def match_params
-    params.require(:match).permit(:game)
-    # TODO: Allow creating team_matches at the same time!
+    params.require(:match).permit(:game_id, :team_ids)
   end
 end

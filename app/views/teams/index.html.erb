@@ -1,21 +1,35 @@
 <h2 class="ui header">Teams</h2>
 
-<div class="ui vertically divided grid">
-  <%= render partial: "shared/empty_row", locals: { collection: @teams, item_title: "teams"} %>
-
-  <% @teams.each do |t| %>
+<div class="ui segment">
+  <div class="ui vertically divided grid">
+    
     <div class="two column row">
       <div class="column">
-        <h3><%= t.name %></h3>
+        <h4 class="ui small grey header">Name</h4>
       </div>
       <div class="right aligned column">
-        <%= link_to "Edit", { action: "edit", id: t.id }, method: :get, class: "ui blue button" %>
-        <%= link_to "Delete", { action: "destroy", id: t.id }, method: :delete, class: "ui red button" %>
+        <h4 class="ui small grey header">Actions</h4>
       </div>
     </div>
-  <% end %>
-</div>
 
-<div>
-  <%= button_to "New Team", { action: "new" }, method: :get, class: "ui green button" %>
+    <%= render partial: "shared/empty_row", locals: { collection: @teams, item_title: "teams"} %>
+
+    <% @teams.each do |t| %>
+      <div class="two column row">
+        <div class="column">
+          <h3><%= t.name %></h3>
+        </div>
+        <div class="right aligned column">
+          <%= link_to "Edit", { action: "edit", id: t.id }, method: :get, class: "ui blue button" %>
+          <%= link_to "Delete", { action: "destroy", id: t.id }, method: :delete, class: "ui red button" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="one column row">
+      <div class="right aligned column">
+        <%= link_to "New Team", { action: "new" }, method: :get, class: "ui green button" %>
+      </div>
+    </div>
+  </div>
 </div>

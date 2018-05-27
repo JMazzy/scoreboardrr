@@ -2,7 +2,6 @@
 
 <div class="ui segment">
   <div class="ui vertically divided grid">
-    <%= render partial: "shared/empty_row", locals: { collection: @matches, item_title: "matches" } %>
 
     <div class="four column row">
       <div class="column">
@@ -18,6 +17,8 @@
         <h4 class="ui small grey header">Actions</h4>
       </div>
     </div>
+
+    <%= render partial: "shared/empty_row", locals: { collection: @matches, item_title: "matches" } %>
 
     <% @matches.each do |m| %>
       <div class="four column row">

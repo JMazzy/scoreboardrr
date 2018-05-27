@@ -10,16 +10,8 @@
 
   <body>
 
-    <header class="ui container">
-      <div class="ui grid">
-        <div class="eight wide column">
-          <h1>Scoreboard</h1>
-        </div>
-        <div class="eight wide right aligned column">
-          <%= render "shared/links" %>
-        </div>
-      </div>
-
+    <header class="ui center aligned container">
+      <h1>Scoreboard</h1>
     </header>
 
     <%= semantic_flash %>
@@ -27,5 +19,11 @@
     <main class="ui container">
       <%= yield %>
     </main>
+
+    <footer>
+      <div class="ui center aligned container">
+        <%= render "shared/links" %>
+      </div>
+    </footer>
   </body>
 </html>

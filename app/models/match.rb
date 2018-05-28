@@ -5,6 +5,8 @@ class Match < ApplicationRecord
   has_many :team_matches, dependent: :destroy
   has_many :teams, through: :team_matches
 
+  accepts_nested_attributes_for :team_matches, allow_destroy: true
+
   def score
     scores = {}
     teams.each do |t|

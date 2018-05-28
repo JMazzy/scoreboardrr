@@ -14,7 +14,6 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     if (@match.save)
-      @match.teams << Team.where(match_params[:team_ids])
       redirect_to :matches
     else
       render "new"
@@ -26,6 +25,7 @@ class MatchesController < ApplicationController
   end
 
   def update
+    fail
     @match = Match.find(params[:id])
     if (@match.update(match_params))
       redirect_to :matches
@@ -45,6 +45,6 @@ class MatchesController < ApplicationController
 
   private
   def match_params
-    params.require(:match).permit(:game_id, :team_ids)
+    params.require(:match).permit(:game_id, team_ids: [], team_matches_attributes: {scores: []})
   end
 end

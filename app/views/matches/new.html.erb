@@ -2,15 +2,15 @@
 
 <%= form_for @match, html: {class: "ui form"} do |f| %>
   <div class="field">
-    <%= fields_for :team_ids do |t| %>
-      <%= t.label "Team 1" %>
-      <%= t.collection_select nil, Team.all, :id, :name %>
-
-      <%= t.label "Team 2" %>
-      <%= t.collection_select nil, Team.all, :id, :name %>
+    <%= f.collection_check_boxes :team_ids, Team.all, :id, :name, checked: Team.all.map(&:id) do |b| %>
+      <span>
+        <%= b.check_box %>
+        <%= b.label %>
+      </span>
     <% end %>
+  </div>
 
-
+  <div class="field">
     <%= f.label :game %>
     <%= f.collection_select :game_id, Game.all, :id, :name %>
   </div>

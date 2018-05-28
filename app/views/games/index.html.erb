@@ -22,6 +22,8 @@
         <div class="right aligned column">
           <%= link_to "Edit", { action: "edit", id: g.id }, method: :get, class: "ui blue button" %>
           <%= link_to "Delete", { action: "destroy", id: g.id }, method: :delete, class: "ui red button" %>
+          <%= link_to "Round Robin Matches", { action: "generate_round_robin", id: g.id }, method: :post, class: "ui orange button" %>
+          <%= link_to "Match With All", { action: "generate_with_all", id: g.id }, method: :post, class: "ui yellow button" %>
         </div>
       </div>
     <% end %>

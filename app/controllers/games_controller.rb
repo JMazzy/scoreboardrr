@@ -42,6 +42,27 @@ class GamesController < ApplicationController
     end
   end
 
+  def generate_round_robin
+    @game = Game.find(params[:id])
+    @teams = Team.all
+    @matches = []
+    (0...@teams.length).each do |i|
+      (i+1...@teams.length).each do |j|
+        Match.new(game_id: @game.id, team_ids: [@teams[i].id, @teams[j].id]).save
+      end
+    end
+
+    redirect_to :matches
+  end
+
+  def generate_with_all
+    @game = Game.find(params[:id])
+    @teams = Team.all
+    @match = Match.new(game_id: @game.id, team_ids: @teams.map { |t| t.id }).save
+
+    redirect_to :matches
+  end
+
   private
   def game_params
     params.require(:game).permit(:name)

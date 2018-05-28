@@ -3,12 +3,9 @@
 <div class="ui segment">
   <div class="ui vertically divided grid">
 
-    <div class="four column row">
+    <div class="three column row">
       <div class="column">
-        <h4 class="ui small grey header">Team 1</h4>
-      </div>
-      <div class="column">
-        <h4 class="ui small grey header">Team 2</h4>
+        <h4 class="ui small grey header">Teams</h4>
       </div>
       <div class="column">
         <h4 class="ui small grey header">Game</h4>
@@ -21,13 +18,12 @@
     <%= render partial: "shared/empty_row", locals: { collection: @matches, item_title: "matches" } %>
 
     <% @matches.each do |m| %>
-      <div class="four column row">
+      <div class="three column row">
         <% score = m.score %>
         <div class="column">
-          <h3><%= m.teams.first.name %> <%= score[m.teams.first.name] %></h3>
-        </div>
-        <div class="column">
-          <h3><%= m.teams.second.name %> <%= score[m.teams.second.name] %></h3>
+          <% m.teams.each do |t| %>
+            <h4><%= t.name %> <%= score[t.name] %></h4>
+          <% end %>
         </div>
         <div class="column">
           <h3><%= m.game.name %></h3>

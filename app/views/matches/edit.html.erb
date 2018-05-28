@@ -1,15 +1,21 @@
 <h2>Edit a Match</h2>
 
 <%= form_for @match, html: {class: "ui form"} do |f| %>
+
+  <div class="grouped fields">
+    <%= f.collection_check_boxes :team_ids, Team.all, :id, :name do |b| %>
+      <div class="field">
+        <div class="ui toggle checkbox">
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <div class="field">
-    <%= f.label :team %>
-    <%= f.collection_select :team_ids, Team.all, :id, :name%>
-
-    <%= f.label :team %>
-    <%= f.collection_select :team_ids, Team.all, :id, :name%>
-
     <%= f.label :game %>
-    <%= f.collection_select :game_id, Game.all, :id, :name %>
+    <%= f.collection_select :game_id, Game.all, :id, :name, html_options: { class: "ui fluid dropdown" } %>
   </div>
 
   <%= f.submit "Submit", class: "ui green button" %>

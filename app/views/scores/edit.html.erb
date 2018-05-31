@@ -1,0 +1,11 @@
+<h2>Edit a Score</h2>
+
+<%= form_for @score, url: match_score_url, html: {class: "ui form"} do |f| %>
+
+  <div class="field">
+    <%= f.label :score %>
+    <%= f.text_field :score %>
+  </div>
+
+  <%= f.submit "Submit", class: "ui green button" %>
+<% end %>

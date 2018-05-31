@@ -25,7 +25,6 @@ class MatchesController < ApplicationController
   end
 
   def update
-    fail
     @match = Match.find(params[:id])
     if (@match.update(match_params))
       redirect_to :matches
@@ -45,6 +44,6 @@ class MatchesController < ApplicationController
 
   private
   def match_params
-    params.require(:match).permit(:game_id, team_ids: [], team_matches_attributes: {scores: []})
+    params.require(:match).permit(:game_id, team_ids: [])
   end
 end

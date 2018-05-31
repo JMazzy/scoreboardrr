@@ -3,9 +3,12 @@
 <div class="ui segment">
   <div class="ui vertically divided grid">
 
-    <div class="three column row">
+    <div class="four column row">
       <div class="column">
         <h4 class="ui small grey header">Teams</h4>
+      </div>
+      <div class="column">
+        <h4 class="ui small grey header">Scores</h4>
       </div>
       <div class="column">
         <h4 class="ui small grey header">Game</h4>
@@ -18,11 +21,15 @@
     <%= render partial: "shared/empty_row", locals: { collection: @matches, item_title: "matches" } %>
 
     <% @matches.each do |m| %>
-      <div class="three column row">
-        <% score = m.score %>
+      <div class="four column row">
         <div class="column">
           <% m.teams.each do |t| %>
-            <h4><%= t.name %> <%= score[t.name] %></h4>
+            <h4><%= t.name %></h4>
+          <% end %>
+        </div>
+        <div class="column">
+          <% m.teams.each do |t| %>
+            <h4><%= m.scores.find_by(team_id: t.id).score %></h4>
           <% end %>
         </div>
         <div class="column">
@@ -31,6 +38,7 @@
         <div class="right aligned column">
           <%= link_to "Edit", {action: "edit", id: m.id}, method: :get, class: "ui blue button" %>
           <%= link_to "Delete", {action: "destroy", id: m.id}, method: :delete, class: "ui red button" %>
+          <%= link_to "Scores", {controller: :scores, action: "index", match_id: m.id}, method: :get, class: "ui yellow button" %>
         </div>
       </div>
     <% end %>

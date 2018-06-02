@@ -1,14 +1,17 @@
-<h2 class="ui header"><%= @scores.first.game.name %> Match Scores</h2>
+<h2 class="ui header"><%= @heading_text %>Scores</h2>
 
 <div class="ui segment">
   <div class="ui vertically divided grid">
 
-    <div class="three column row">
+    <div class="four column row">
       <div class="column">
         <h4 class="ui small grey header">Team</h4>
       </div>
       <div class="column">
-        <h4 class="ui small grey header">Score</h4>
+        <h4 class="ui small grey header">Score normalized (raw)</h4>
+      </div>
+      <div class="column">
+        <h4 class="ui small grey header">Game (opponent)</h4>
       </div>
       <div class="right aligned column">
         <h4 class="ui small grey header">Actions</h4>
@@ -18,12 +21,15 @@
     <%= render partial: "shared/empty_row", locals: { collection: @scores, item_title: "scores" } %>
 
     <% @scores.each do |s| %>
-      <div class="three column row">
+      <div class="four column row">
         <div class="column">
           <h3><%= s.team.name %></h3>
         </div>
         <div class="column">
-          <h3><%= s.score %></h3>
+          <h3><%= s.normalized %> (<%= s.score %>) </h3>
+        </div>
+        <div class="column">
+          <h3><%= s.game.name %> (<%= s.opposing_team_name %>)</h3>
         </div>
         <div class="right aligned column">
           <h3><%= link_to "Edit", {action: "edit", id: s.id}, method: :get, class: "ui blue button" %></h3>

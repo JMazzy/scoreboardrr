@@ -28,10 +28,9 @@
           <% end %>
         </div>
         <div class="column">
-          <% max = m.max_score %>
           <% m.teams.each do |t| %>
             <% score = m.scores.find_by(team_id: t.id) %>
-            <h4><%= score.normalized(max) %> (<%= score.score %>) </h4>
+            <h4><%= score.normalized %> (<%= score.score %>) </h4>
           <% end %>
         </div>
         <div class="column">

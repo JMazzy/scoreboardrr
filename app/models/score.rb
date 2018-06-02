@@ -11,4 +11,13 @@ class Score < ApplicationRecord
 
     100 * score / max_score
   end
+
+  def opposing_teams
+    match.teams.where.not(id: team.id)
+  end
+
+  def opposing_team_name
+    teams = opposing_teams
+    teams.count > 1 ? "Many" : teams.first.name
+  end
 end

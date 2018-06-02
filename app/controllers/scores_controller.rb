@@ -2,8 +2,10 @@ class ScoresController < ApplicationController
   def index
     if (params[:match_id])
       @scores = Score.where(match_id: params[:match_id])
+      @heading_text = "#{@scores.first.game.name} Match "
     else
       @scores = Score.all
+      @heading_text = ''
     end
   end
 
@@ -14,7 +16,7 @@ class ScoresController < ApplicationController
   def update
     @score = Score.find(params[:id])
     if (@score.update(score_params))
-      redirect_to :match_scores
+      redirect_to controller: :scores, action: :index, match_id: @score.match.id
     else
       render "edit"
     end

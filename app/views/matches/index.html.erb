@@ -34,7 +34,9 @@
           <% end %>
         </div>
         <div class="column">
-          <h3><%= m.game.name %></h3>
+          <%= link_to controller: :matches, action: :index, game_id: m.game.id do %>
+            <h3><%= m.game.name %></h3>
+          <% end %>
         </div>
         <div class="right aligned column">
           <%= link_to "Edit", {action: "edit", id: m.id}, method: :get, class: "ui blue button" %>

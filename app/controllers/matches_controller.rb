@@ -1,10 +1,10 @@
 class MatchesController < ApplicationController
   def index
-    @matches = Match.all
-  end
-
-  def show
-    @match = Match.find(params[:id])
+    if (params[:game_id])
+      @matches = Game.find_by(id: params[:game_id]).matches
+    else
+      @matches = Match.all
+    end
   end
 
   def new

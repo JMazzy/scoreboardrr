@@ -29,8 +29,10 @@
         </div>
         <div class="column">
           <% m.teams.each do |t| %>
-            <% score = m.scores.find_by(team_id: t.id) %>
-            <h4><%= score.normalized %> (<%= score.score %>) </h4>
+            <h4><%= link_to controller: :scores, action: :index, match_id: m.id do %>
+              <% score = m.scores.find_by(team_id: t.id) %>
+              <%= score.normalized %> (<%= score.score %>)
+            <% end %></h4>
           <% end %>
         </div>
         <div class="column">
@@ -41,7 +43,6 @@
         <div class="right aligned column">
           <%= link_to "Edit", {action: "edit", id: m.id}, method: :get, class: "ui blue button" %>
           <%= link_to "Delete", {action: "destroy", id: m.id}, method: :delete, class: "ui red button" %>
-          <%= link_to "Scores", {controller: :scores, action: "index", match_id: m.id}, method: :get, class: "ui yellow button" %>
         </div>
       </div>
     <% end %>

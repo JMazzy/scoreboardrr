@@ -3,9 +3,12 @@
 <div class="ui segment">
   <div class="ui vertically divided grid">
 
-    <div class="two column row">
+    <div class="three column row">
       <div class="column">
         <h4 class="ui small grey header">Name</h4>
+      </div>
+      <div class="column">
+        <h4 class="ui small grey header">Smart Matches</h4>
       </div>
       <div class="right aligned column">
         <h4 class="ui small grey header">Actions</h4>
@@ -15,15 +18,17 @@
     <%= render partial: "shared/empty_row", locals: { collection: @games, item_title: "games"} %>
 
     <% @games.each do |g| %>
-      <div class="two column row">
+      <div class="three column row">
         <div class="column">
           <h3><%= g.name %></h3>
+        </div>
+        <div class="column">
+          <%= link_to "Round Robin", { action: "generate_round_robin", id: g.id }, method: :post, class: "ui orange button" %>
+          <%= link_to "All Teams", { action: "generate_with_all", id: g.id }, method: :post, class: "ui yellow button" %>
         </div>
         <div class="right aligned column">
           <%= link_to "Edit", { action: "edit", id: g.id }, method: :get, class: "ui blue button" %>
           <%= link_to "Delete", { action: "destroy", id: g.id }, method: :delete, class: "ui red button" %>
-          <%= link_to "Round Robin Matches", { action: "generate_round_robin", id: g.id }, method: :post, class: "ui orange button" %>
-          <%= link_to "Match With All", { action: "generate_with_all", id: g.id }, method: :post, class: "ui yellow button" %>
         </div>
       </div>
     <% end %>

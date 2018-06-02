@@ -8,7 +8,7 @@
         <h4 class="ui small grey header">Teams</h4>
       </div>
       <div class="column">
-        <h4 class="ui small grey header">Scores</h4>
+        <h4 class="ui small grey header">Scores normalized (raw)</h4>
       </div>
       <div class="column">
         <h4 class="ui small grey header">Game</h4>
@@ -28,8 +28,10 @@
           <% end %>
         </div>
         <div class="column">
+          <% max = m.max_score %>
           <% m.teams.each do |t| %>
-            <h4><%= m.scores.find_by(team_id: t.id).score %></h4>
+            <% score = m.scores.find_by(team_id: t.id) %>
+            <h4><%= score.normalized(max) %> (<%= score.score %>) </h4>
           <% end %>
         </div>
         <div class="column">

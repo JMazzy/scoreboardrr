@@ -2,10 +2,13 @@
 
 <div class="ui segment">
   <div class="ui vertically divided grid">
-    
-    <div class="two column row">
+
+    <div class="three column row">
       <div class="column">
         <h4 class="ui small grey header">Name</h4>
+      </div>
+      <div class="column">
+        <h4 class="ui small grey header">Total Score</h4>
       </div>
       <div class="right aligned column">
         <h4 class="ui small grey header">Actions</h4>
@@ -15,9 +18,12 @@
     <%= render partial: "shared/empty_row", locals: { collection: @teams, item_title: "teams"} %>
 
     <% @teams.each do |t| %>
-      <div class="two column row">
+      <div class="three column row">
         <div class="column">
           <h3><%= t.name %></h3>
+        </div>
+        <div class="column">
+          <h3><%= t.total_score %></h3>
         </div>
         <div class="right aligned column">
           <%= link_to "Edit", { action: "edit", id: t.id }, method: :get, class: "ui blue button" %>

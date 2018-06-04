@@ -33,10 +33,5 @@
       </div>
     <% end %>
 
-    <div class="one column row">
-      <div class="right aligned column">
-        <%= link_to "New Game", { action: "new" }, method: :get, class: "ui green button" %>
-      </div>
-    </div>
-  </div>
+    <%= render partial: "shared/new_button_row", locals: { item_title: "Game" } %>
 </div>

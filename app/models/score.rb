@@ -9,6 +9,10 @@ class Score < ApplicationRecord
       max_score = match.max_score
     end
 
+    if (!score || !max_score || max_score == 0)
+      return 0
+    end
+
     100 * score / max_score
   end
 
@@ -19,5 +23,13 @@ class Score < ApplicationRecord
   def opposing_team_name
     teams = opposing_teams
     teams.count > 1 ? "Many" : teams.first.name
+  end
+
+  def <=>(other)
+    if ( !!self.score && !!other.score ) # neither is nil
+      other.score - self.score
+    else
+      1
+    end
   end
 end

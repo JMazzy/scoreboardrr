@@ -1,12 +1,14 @@
 class ScoresController < ApplicationController
   def index
     if (params[:match_id])
-      @scores = Score.where(match_id: params[:match_id])
+      @scores = Score.where(match_id: params[:match_id]).to_a
       @heading_text = "#{@scores.first.game.name} Match "
     else
-      @scores = Score.all
+      @scores = Score.all.to_a
       @heading_text = ''
     end
+
+    @scores.sort!
   end
 
   def edit

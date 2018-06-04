@@ -6,6 +6,11 @@ class Match < ApplicationRecord
   has_many :teams, through: :scores
 
   def max_score
-    scores.map { |s| s.score }.max
+    max = scores
+      .select { |s| !!s.score }
+      .map { |s| s.score }
+      .max
+
+    max ? max : 0
   end
 end

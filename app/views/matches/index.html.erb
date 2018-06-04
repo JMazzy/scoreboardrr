@@ -22,16 +22,16 @@
 
     <% @matches.each do |m| %>
       <div class="four column row">
+        <% sorted_scores = m.scores.sort %>
         <div class="column">
-          <% m.teams.each do |t| %>
-            <h4><%= t.name %></h4>
+          <% sorted_scores.each do |s| %>
+            <h4><%= s.team.name %></h4>
           <% end %>
         </div>
         <div class="column">
-          <% m.teams.each do |t| %>
-            <h4><%= link_to controller: :scores, action: :index, match_id: m.id do %>
-              <% score = m.scores.find_by(team_id: t.id) %>
-              <%= score.normalized %> (<%= score.score %>)
+          <% sorted_scores.each do |s| %>
+            <h4><%= link_to controller: :scores, action: :edit, id: s.id do %>
+              <%= s.normalized %> (<%= s.score %>)
             <% end %></h4>
           <% end %>
         </div>
@@ -41,16 +41,13 @@
           <% end %>
         </div>
         <div class="right aligned column">
+          <%= link_to "Scores", { controller: :scores, action: :index, match_id: m.id }, class: "ui blue button" %>
           <%= link_to "Edit", {action: "edit", id: m.id}, method: :get, class: "ui blue button" %>
           <%= link_to "Delete", {action: "destroy", id: m.id}, method: :delete, class: "ui red button" %>
         </div>
       </div>
     <% end %>
 
-    <div class="one column row">
-      <div class="right aligned column">
-        <%= link_to "New Match", { action: "new" }, method: :get, class: "ui green button" %>
-      </div>
-    </div>
+    <%= render partial: "shared/new_button_row", locals: { item_title: "Match" } %>
   </div>
 </div>

@@ -3,12 +3,15 @@
 <div class="ui segment">
   <div class="ui vertically divided grid">
 
-    <div class="three column row">
+    <div class="four column row">
       <div class="column">
         <h4 class="ui small grey header">Name</h4>
       </div>
       <div class="column">
         <h4 class="ui small grey header">Total Score</h4>
+      </div>
+      <div class="column">
+        <h4 class="ui small grey header">Matches Played</h4>
       </div>
       <div class="right aligned column">
         <h4 class="ui small grey header">Actions</h4>
@@ -18,12 +21,15 @@
     <%= render partial: "shared/empty_row", locals: { collection: @teams, item_title: "teams"} %>
 
     <% @teams.each do |t| %>
-      <div class="three column row">
+      <div class="four column row">
         <div class="column">
           <h3><%= t.name %></h3>
         </div>
         <div class="column">
           <h3><%= t.total_score %></h3>
+        </div>
+        <div class="column">
+          <h3><%= t.matches_played %></h3>
         </div>
         <div class="right aligned column">
           <%= link_to "Edit", { action: "edit", id: t.id }, method: :get, class: "ui blue button" %>
@@ -32,10 +38,6 @@
       </div>
     <% end %>
 
-    <div class="one column row">
-      <div class="right aligned column">
-        <%= link_to "New Team", { action: "new" }, method: :get, class: "ui green button" %>
-      </div>
-    </div>
+    <%= render partial: "shared/new_button_row", locals: { item_title: "Team" } %>
   </div>
 </div>

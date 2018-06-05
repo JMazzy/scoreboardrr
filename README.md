@@ -1,24 +1,22 @@
-# README
+# Scoreboardrr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A scoreboard app for friendly competitions.
 
-Things you may want to cover:
+It's a bit different because I'm initially writing it to be run on an ad hoc LAN without internet (at a campground for a family reunion).
 
-* Ruby version
+If I like it, I might keep working on it for fun and add normal web app stuff like security.
 
-* System dependencies
+Stack:
+* Ruby 2.4.2
+* Rails 5.1.6
+* Database: SQLite3
+* Server: Puma
+* UI Framework: Semantic UI
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run locally:
+* Install correct Ruby version
+* Run the following commands:
+  * Install Bundler `gem install bundler`
+  * Install dependencies `bundle install`
+  * Run migrations `rake db:migrate`
+  * Server `rails s`

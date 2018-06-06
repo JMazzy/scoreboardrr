@@ -21,6 +21,7 @@
       <div class="three column row">
         <div class="column">
           <h3><%= g.name %></h3>
+          <%= link_to "Matches for this Game", { controller: :matches, action: :index, game_id: g.id } %>
         </div>
         <div class="column">
           <%= link_to "Round Robin", { action: "generate_round_robin", id: g.id }, method: :post, class: "ui orange button" %>

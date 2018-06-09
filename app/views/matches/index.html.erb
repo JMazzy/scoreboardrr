@@ -24,21 +24,21 @@
       <div class="four column row">
         <% sorted_scores = m.scores.sort %>
         <div class="column">
-          <% sorted_scores.each do |s| %>
-            <h4><%= s.team.name %></h4>
+          <% sorted_scores.each_with_index do |s, index| %>
+            <h4 class="ui header"><%= s.team.name %><%= render partial: "shared/medal", locals: { place: index + 1 }%></h4>
           <% end %>
           <%= link_to "View Scores", { controller: :scores, action: :index, match_id: m.id } %>
         </div>
         <div class="column">
           <% sorted_scores.each do |s| %>
-            <h4><%= link_to controller: :scores, action: :edit, id: s.id do %>
+            <h4 class="ui header"><%= link_to controller: :scores, action: :edit, id: s.id do %>
               <%= s.normalized %> <%= s.score ? "(#{s.score})" : "" %>
             <% end %></h4>
           <% end %>
         </div>
         <div class="column">
           <%= link_to controller: :matches, action: :index, game_id: m.game.id do %>
-            <h3><%= m.game.name %></h3>
+            <h3 class="ui header"><%= m.game.name %></h3>
           <% end %>
         </div>
         <div class="right aligned column">

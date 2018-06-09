@@ -29,7 +29,7 @@ class Score < ApplicationRecord
 
   def <=>(other)
     if ( !!self.score && !!other.score ) # neither is nil
-      other.score - self.score
+      -1 * (self.score <=> other.score)
     else
       1
     end

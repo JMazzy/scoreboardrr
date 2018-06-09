@@ -8,7 +8,7 @@ class ScoresController < ApplicationController
       @heading_text = ''
     end
 
-    @scores.sort!
+    @scores.sort_by! { |s| s.score || 0 }.reverse!
   end
 
   def edit

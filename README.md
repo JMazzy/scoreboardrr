@@ -14,9 +14,10 @@ Stack:
 * UI Framework: Semantic UI
 
 To run locally:
-* Install correct Ruby version
-* Run the following commands:
-  * Install Bundler `gem install bundler`
-  * Install dependencies `bundle install`
-  * Run migrations `rake db:migrate`
-  * Server `rails s`
+* Install the correct Ruby version using `rvm` or similar tool
+* Run the following commands from the project directory:
+  * `gem install bundler` to install bundler
+  * `bundle install` to install dependencies
+  * `rake db:migrate` to run database migrations
+  * `rails s` to run the server
+* Go to `localhost:3000` in your browser

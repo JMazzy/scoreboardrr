@@ -18,8 +18,10 @@ class ScoresController < ApplicationController
   def update
     @score = Score.find(params[:id])
     if (@score.update(score_params))
+      flash[:success] = "Score saved successfully."
       redirect_to controller: :scores, action: :index, match_id: @score.match.id
     else
+      flash[:error] = "Sorry, the score could not be saved."
       render "edit"
     end
   end

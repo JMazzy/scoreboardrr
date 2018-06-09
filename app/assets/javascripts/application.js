@@ -16,3 +16,9 @@
 // Loads all Semantic javascripts
 //= require jquery
 //= require semantic-ui
+
+$(document).on('turbolinks:load', function() {
+  $('.message .close').on('click', function() {
+    $(this).closest('.message').transition('fade');
+  });
+});

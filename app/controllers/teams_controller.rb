@@ -10,8 +10,10 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if (@team.save)
+      flash[:success] = "The team was saved successfully."
       redirect_to :teams
     else
+      flash[:error] = "Sorry, we couldn't save that team."
       render "new"
     end
   end
@@ -23,8 +25,10 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if (@team.update(team_params))
+      flash[:success] = "The team was saved successfully."
       redirect_to :teams
     else
+      flash[:error] = "Sorry, we couldn't save that team."
       render "edit"
     end
   end
@@ -33,7 +37,9 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     if (@team.destroy)
       redirect_to :teams
+      flash[:success] = "The team was deleted successfully."
     else
+      flash[:error] = "Sorry, we couldn't delete that team."
       render "show"
     end
   end

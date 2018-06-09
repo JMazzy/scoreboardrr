@@ -12,13 +12,10 @@
 
     <header class="ui center aligned container">
       <h1>Scoreboard</h1>
-      <div class="ui center aligned container">
-        <%= render "shared/links" %>
-      </div>
+      <%= render "shared/links" %>
+      <%= semantic_flash %>
     </header>
-
-    <%= semantic_flash %>
-
+    <br>
     <main class="ui container">
       <%= yield %>
     </main>

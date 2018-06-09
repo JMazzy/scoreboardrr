@@ -14,8 +14,10 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     if (@match.save)
+      flash[:success] = "Match saved successfully."
       redirect_to :matches
     else
+      flash[:error] = "Sorry, the match could not be saved."
       render "new"
     end
   end
@@ -27,8 +29,10 @@ class MatchesController < ApplicationController
   def update
     @match = Match.find(params[:id])
     if (@match.update(match_params))
+      flash[:success] = "Match saved successfully."
       redirect_to :matches
     else
+      flash[:error] = "Sorry, the match could not be saved."
       render "edit"
     end
   end
@@ -36,8 +40,10 @@ class MatchesController < ApplicationController
   def destroy
     @match = Match.find(params[:id])
     if (@match.destroy)
+      flash[:success] = "Match deleted successfully."
       redirect_to :matches
     else
+      flash[:error] = "Sorry, the match could not be deleted."
       render "index"
     end
   end

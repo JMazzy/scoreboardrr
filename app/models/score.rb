@@ -1,4 +1,6 @@
 class Score < ApplicationRecord
+  validates :score, numericality: true, allow_nil: true
+
   belongs_to :team
   belongs_to :match
 

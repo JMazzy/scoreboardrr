@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
       flash[:success] = "The team was saved successfully."
       redirect_to :teams
     else
-      flash[:error] = "Sorry, we couldn't save that team."
+      flash.now[:error] = "Sorry, we couldn't save that team."
       render "new"
     end
   end
@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
       flash[:success] = "The team was saved successfully."
       redirect_to :teams
     else
-      flash[:error] = "Sorry, we couldn't save that team."
+      flash.now[:error] = "Sorry, we couldn't save that team."
       render "edit"
     end
   end
@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
       redirect_to :teams
       flash[:success] = "The team was deleted successfully."
     else
-      flash[:error] = "Sorry, we couldn't delete that team."
+      flash.now[:error] = "Sorry, we couldn't delete that team."
       render "show"
     end
   end

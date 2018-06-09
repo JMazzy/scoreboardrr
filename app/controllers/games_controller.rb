@@ -13,7 +13,7 @@ class GamesController < ApplicationController
       flash[:success] = "Game saved successfully."
       redirect_to :games
     else
-      flash[:error] = "Game could not be saved."
+      flash.now[:error] = "Game could not be saved."
       render "new"
     end
   end
@@ -28,7 +28,7 @@ class GamesController < ApplicationController
       flash[:success] = "Game saved successfully."
       redirect_to :games
     else
-      flash[:error] = "Game could not be saved."
+      flash.now[:error] = "Game could not be saved."
       render "edit"
     end
   end
@@ -39,7 +39,7 @@ class GamesController < ApplicationController
       flash[:success] = "Game deleted successfully."
       redirect_to :games
     else
-      flash[:error] = "Game could not be deleted."
+      flash.now[:error] = "Game could not be deleted."
       render "show"
     end
   end

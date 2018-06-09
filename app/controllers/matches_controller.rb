@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
       flash[:success] = "Match saved successfully."
       redirect_to :matches
     else
-      flash[:error] = "Sorry, the match could not be saved."
+      flash.now[:error] = "Sorry, the match could not be saved."
       render "new"
     end
   end
@@ -32,7 +32,7 @@ class MatchesController < ApplicationController
       flash[:success] = "Match saved successfully."
       redirect_to :matches
     else
-      flash[:error] = "Sorry, the match could not be saved."
+      flash.now[:error] = "Sorry, the match could not be saved."
       render "edit"
     end
   end
@@ -43,7 +43,7 @@ class MatchesController < ApplicationController
       flash[:success] = "Match deleted successfully."
       redirect_to :matches
     else
-      flash[:error] = "Sorry, the match could not be deleted."
+      flash.now[:error] = "Sorry, the match could not be deleted."
       render "index"
     end
   end

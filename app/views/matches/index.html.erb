@@ -42,8 +42,7 @@
           <% end %>
         </div>
         <div class="right aligned column">
-          <%= link_to "Edit", {action: "edit", id: m.id}, method: :get, class: "ui blue button" %>
-          <%= link_to "Delete", {action: "destroy", id: m.id}, method: :delete, class: "ui red button" %>
+          <%= render partial: "shared/actions", locals: { id: m.id } %>
         </div>
       </div>
     <% end %>

@@ -14,14 +14,12 @@ class Match < ApplicationRecord
     max ? max : 0
   end
 
-  def win?(team_id)
-    score = scores.find_by(team_id: team_id)
-    scores.each do |s|
-      if ( score && s && s.score && score.score && s.id != score.id && s > score )
-        return false
-      end
-    end
+  def min_score
+    min = scores
+      .select { |s| !!s.score }
+      .map { |s| s.score }
+      .min
 
-    true
+    min ? min : 0
   end
 end

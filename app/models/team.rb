@@ -13,4 +13,8 @@ class Team < ApplicationRecord
       m.scores.sum { |s| s.score || 0 } > 0
     end.count
   end
+
+  def <=>(other)
+    -1 * ( self.total_score <=> other.total_score )
+  end
 end

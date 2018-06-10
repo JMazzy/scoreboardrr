@@ -32,7 +32,7 @@
           <h3 class="ui header"><%= s.game.name %> <div class="sub header">(<%= s.opposing_team_name %>)</div></h3>
         </div>
         <div class="right aligned column">
-          <h3 class="ui header"><%= link_to "Edit", {action: "edit", id: s.id}, method: :get, class: "ui blue button" %></h3>
+          <%= link_to "Edit", {action: "edit", id: s.id}, method: :get, class: "ui blue button" %>
         </div>
       </div>
     <% end %>

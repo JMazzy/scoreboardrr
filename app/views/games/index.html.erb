@@ -20,7 +20,7 @@
     <% @games.each do |g| %>
       <div class="three column row">
         <div class="column">
-          <h3><%= g.name %></h3>
+          <h3><%= g.name %> <div class="ui tiny basic label"><%= g.score_type.humanize %></div></h3>
           <%= link_to "Matches for this Game", { controller: :matches, action: :index, game_id: g.id } %>
         </div>
         <div class="column">
@@ -28,8 +28,7 @@
           <%= link_to "All Teams", { action: "generate_with_all", id: g.id }, method: :post, class: "ui yellow button" %>
         </div>
         <div class="right aligned column">
-          <%= link_to "Edit", { action: "edit", id: g.id }, method: :get, class: "ui blue button" %>
-          <%= link_to "Delete", { action: "destroy", id: g.id }, method: :delete, class: "ui red button" %>
+          <%= render partial: "shared/actions", locals: { id: g.id } %>
         </div>
       </div>
     <% end %>

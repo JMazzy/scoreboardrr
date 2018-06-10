@@ -32,8 +32,7 @@
           <h3><%= t.matches_played %></h3>
         </div>
         <div class="right aligned column">
-          <%= link_to "Edit", { action: "edit", id: t.id }, method: :get, class: "ui blue button" %>
-          <%= link_to "Delete", { action: "destroy", id: t.id }, method: :delete, class: "ui red button" %>
+          <%= render partial: "shared/actions", locals: { id: t.id } %>
         </div>
       </div>
     <% end %>

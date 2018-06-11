@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all.sort
+    @teams = Team.includes(:matches, :scores).all.sort
   end
 
   def new

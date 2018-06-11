@@ -1,9 +1,9 @@
 class MatchesController < ApplicationController
   def index
     if (params[:game_id])
-      @matches = Game.find_by(id: params[:game_id]).matches
+      @matches = Game.includes(:matches).find_by(id: params[:game_id]).matches
     else
-      @matches = Match.all
+      @matches = Match.includes(:game, :scores, :teams).all
     end
   end
 

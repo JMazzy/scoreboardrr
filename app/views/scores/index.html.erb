@@ -30,6 +30,7 @@
         </div>
         <div class="column">
           <h3 class="ui header"><%= s.game.name %></h3>
+          <%= link_to "Filter", controller: :scores, action: :index, game_id: s.game.id %>
         </div>
         <div class="right aligned column">
           <%= link_to "Edit", {action: "edit", id: s.id}, method: :get, class: "ui blue button" %>

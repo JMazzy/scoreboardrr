@@ -5,4 +5,6 @@ class Game < ApplicationRecord
   validates :score_type, presence: true
 
   has_many :matches, dependent: :destroy
+  has_many :teams, through: :matches
+  has_many :scores, through: :matches
 end

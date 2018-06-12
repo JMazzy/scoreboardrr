@@ -3,6 +3,9 @@ class ScoresController < ApplicationController
     if (params[:match_id])
       @scores = Score.includes(:team, :match, :game).where(match_id: params[:match_id]).to_a
       @heading_text = "#{@scores.first.game.name} Match "
+    elsif (params[:game_id])
+      @scores = Game.includes(:teams, :matches, :scores).find(params[:game_id]).scores.to_a
+      @heading_text = "#{@scores.first.game.name} Match "
     else
       @scores = Score.includes(:team, :match, :game).all.to_a
       @heading_text = ''
@@ -28,6 +31,6 @@ class ScoresController < ApplicationController
 
   private
   def score_params
-    params.require(:score).permit(:match_id, :team_id, :score)
+    params.require(:score).permit(:match_id, :team_id, :game_id, :score)
   end
 end

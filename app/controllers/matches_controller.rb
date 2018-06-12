@@ -1,7 +1,9 @@
 class MatchesController < ApplicationController
   def index
     if (params[:game_id])
-      @matches = Game.includes(:matches).find_by(id: params[:game_id]).matches
+      @matches = Game.includes(:matches, :scores, :teams).find(params[:game_id]).matches
+    elsif (params[:team_id])
+      @matches = Team.includes(:matches, :scores, :games).find(params[:team_id]).matches
     else
       @matches = Match.includes(:game, :scores, :teams).all
     end
@@ -50,6 +52,6 @@ class MatchesController < ApplicationController
 
   private
   def match_params
-    params.require(:match).permit(:game_id, team_ids: [])
+    params.require(:match).permit(:game_id, :team_id, team_ids: [])
   end
 end

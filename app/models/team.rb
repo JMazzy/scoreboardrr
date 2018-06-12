@@ -3,6 +3,7 @@ class Team < ApplicationRecord
 
   has_many :scores, dependent: :destroy
   has_many :matches, through: :scores
+  has_many :games, through: :matches
 
   def total_score
     scores.sum { |s| s.normalized }

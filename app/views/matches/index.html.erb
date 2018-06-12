@@ -30,7 +30,7 @@
               <%= render(partial: "shared/medal", locals: { place: index + 1 }) if (m.show_medals?)%>
             </h4>
           <% end %>
-          <%= link_to "View Scores", { controller: :scores, action: :index, match_id: m.id } %>
+          <%= link_to "Scores", { controller: :scores, action: :index, match_id: m.id } %>
         </div>
         <div class="column">
           <% sorted_scores.each do |s| %>
@@ -43,8 +43,9 @@
         </div>
         <div class="column">
           <h3 class="ui header">
-            <%= link_to m.game.name, controller: :matches, action: :index, game_id: m.game.id %>
+            <%= m.game.name %>
           </h3>
+          <%= link_to "Filter", controller: :matches, action: :index, game_id: m.game.id %>
         </div>
         <div class="right aligned column">
           <%= render partial: "shared/actions", locals: { id: m.id } %>

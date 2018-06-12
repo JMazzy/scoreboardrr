@@ -27,6 +27,7 @@
             <%= t.name %>
             <%= render(partial: "shared/medal", locals: { place: index + 1 }) if (t.show_medals?) %>
           </h3>
+          <%= link_to "Matches", { controller: :matches, action: :index, team_id: t.id } %>
         </div>
         <div class="column">
           <h3><%= t.total_score %></h3>

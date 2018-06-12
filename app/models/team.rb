@@ -14,6 +14,10 @@ class Team < ApplicationRecord
     end.count
   end
 
+  def show_medals?
+    !!total_score
+  end
+
   def <=>(other)
     -1 * ( self.total_score <=> other.total_score )
   end

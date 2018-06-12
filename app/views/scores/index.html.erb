@@ -5,13 +5,13 @@
 
     <div class="four column row">
       <div class="column">
-        <h4 class="ui small grey header">Team</h4>
+        <h4 class="ui small grey header">Team <div class="sub header">opponent</div></h4>
       </div>
       <div class="column">
-        <h4 class="ui small grey header">Score <div class="sub header">normalized (raw)</h4>
+        <h4 class="ui small grey header">Score <div class="sub header">raw</h4>
       </div>
       <div class="column">
-        <h4 class="ui small grey header">Game <div class="sub header">(opponent)</div></h4>
+        <h4 class="ui small grey header">Game</h4>
       </div>
       <div class="right aligned column">
         <h4 class="ui small grey header">Actions</h4>
@@ -23,13 +23,13 @@
     <% @scores.each do |s| %>
       <div class="four column row">
         <div class="column">
-          <h3 class="ui header"><%= s.team.name %></h3>
+          <h3 class="ui header"><%= s.team.name %> <div class="sub header">vs. <%= s.opposing_team_name %></div></h3>
         </div>
         <div class="column">
-          <h3 class="ui header"><%= s.normalized %> <%= s.score ? "(#{s.score})" : "" %> </h3>
+          <h3 class="ui header"><%= s.normalized %> <div class="sub header"><%= s.score ? s.score : "" %></div></h3>
         </div>
         <div class="column">
-          <h3 class="ui header"><%= s.game.name %> <div class="sub header">(<%= s.opposing_team_name %>)</div></h3>
+          <h3 class="ui header"><%= s.game.name %></h3>
         </div>
         <div class="right aligned column">
           <%= link_to "Edit", {action: "edit", id: s.id}, method: :get, class: "ui blue button" %>

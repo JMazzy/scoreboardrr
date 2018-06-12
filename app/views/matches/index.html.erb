@@ -26,7 +26,8 @@
         <div class="column">
           <% sorted_scores.each_with_index do |s, index| %>
             <h4 class="ui header">
-              <%= s.team.name %> <%= render partial: "shared/medal", locals: { place: index + 1 }%>
+              <%= s.team.name %>
+              <%= render(partial: "shared/medal", locals: { place: index + 1 }) if (m.show_medals?)%>
             </h4>
           <% end %>
           <%= link_to "View Scores", { controller: :scores, action: :index, match_id: m.id } %>

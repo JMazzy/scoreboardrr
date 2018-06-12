@@ -23,7 +23,10 @@
     <% @teams.each_with_index do |t, index| %>
       <div class="four column row">
         <div class="column">
-          <h3><%= t.name %><%= render partial: "shared/medal", locals: { place: index + 1 }%></h3>
+          <h3>
+            <%= t.name %>
+            <%= render(partial: "shared/medal", locals: { place: index + 1 }) if (t.show_medals?) %>
+          </h3>
         </div>
         <div class="column">
           <h3><%= t.total_score %></h3>

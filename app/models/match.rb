@@ -22,4 +22,18 @@ class Match < ApplicationRecord
 
     min ? min : 0
   end
+
+  def show_medals?
+    result = false
+
+    scores.each do |s|
+      if (!s.score)
+        return false # if any score is nil, no medals can be given
+      elsif (s.score != 0)
+        result = true # there must be at least one score that is non-zero
+      end
+    end
+
+    result
+  end
 end
